@@ -1,49 +1,90 @@
-Movie Recommendation System
-Overview
+**Movie Recommendation System**
+**Overview**
 
-This project is a content-based movie recommendation system that suggests similar movies based on textual metadata such as overview, genres, keywords, cast, and crew information. The system uses vectorization techniques and cosine similarity to measure the closeness between movies. A Streamlit-based user interface is provided to allow users to interact with the recommender system.
+Movie Recommendation System is a content-based recommendation engine that suggests movies similar to a selected title using textual metadata such as overview, genres, keywords, cast, and crew.
 
-Features
+The system uses CountVectorizer to vectorize text data and cosine similarity to compute similarity between movies. Users interact with the system via a Streamlit-based web interface.
 
-Processes TMDB movie and credits datasets.
+**Features**
 
-Cleans and extracts meaningful metadata from JSON-formatted text fields.
+Processes and merges TMDB movies and credits datasets.
 
-Generates a "tags" column combining overview, genres, keywords, cast, and crew.
+Extracts and cleans metadata from JSON-formatted fields.
 
-Vectorizes text data using CountVectorizer.
+Combines overview, genres, keywords, cast, and crew into a tags column.
 
-Computes cosine similarity among all movies.
+Vectorizes movie tags using CountVectorizer.
 
-Recommends five similar movies based on the selected movie.
+Computes cosine similarity for movie recommendations.
 
-Displays movie posters using The Movie Database (TMDB) API.
+Provides top 5 similar movie recommendations.
 
-Offers an interactive interface built using Streamlit.
+Displays movie posters using the TMDB API.
 
-Dataset
+Interactive Streamlit web interface for easy usage.
 
-The project uses the following datasets:
+**Technology Stack**
+Backend & ML
 
-tmdb_5000_movies.csv
+Python 3.x
 
-tmdb_5000_credits.csv
+Pandas — Data manipulation
 
-Both datasets are available publicly on Kaggle.
+NumPy — Numerical computations
 
-Project Structure
-.
+Scikit-learn — CountVectorizer, cosine similarity
+
+Frontend
+
+Streamlit — Web interface
+
+Requests — Fetch movie posters from TMDB API
+
+**Dataset**
+
+tmdb_5000_movies.csv — Movie details
+
+tmdb_5000_credits.csv — Cast & crew information
+
+Both datasets are publicly available on Kaggle.
+
+**Project Structure**
+movie-recommender/
 ├── model/
-│   ├── movie_list.pkl
-│   ├── similarity.pkl
-├── app.py
-├── notebook.ipynb
-├── requirements.txt
+│   ├── movie_list.pkl           # Processed movie dataframe
+│   ├── similarity.pkl           # Cosine similarity matrix
+├── app.py                       # Streamlit application
+├── notebook.ipynb               # Data preprocessing and feature building
+├── requirements.txt             # Python dependencies
 └── README.md
 
 
-movie_list.pkl
-Contains the processed movie dataframe used by the recommender.
 
-similarity.pkl
-Contains the cosine similarity matrix used to compute recommendations.
+Select a movie from the dropdown to view top 5 recommended movies along with their posters.
+
+**Model Details**
+
+Data Preprocessing
+
+Merge movies and credits datasets on title.
+
+Extract top 3 cast members and director from JSON.
+
+Combine overview, genres, keywords, cast, and crew into tags column.
+
+Vectorization
+
+Use CountVectorizer (max_features=5000, stop_words='english')
+
+Similarity Calculation
+
+Compute cosine similarity between vectorized tags.
+
+Pickle Files
+
+movie_list.pkl — stores processed movie dataframe
+
+similarity.pkl — stores cosine similarity matrix
+
+
+
